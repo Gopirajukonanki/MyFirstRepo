@@ -1,0 +1,217 @@
+<html>
+    <head>
+        <title>To Do List</title>
+    </head>
+
+<body>
+    <p id="demo"></p>
+    <h1>To Do List</h1>
+<form id="todoForm">
+
+<input id="todoInput">
+<button type="button" onclick="fun()">Click Me</button>
+    <ol id="todoList">
+    </ol>
+</form>
+
+<script>
+    //To Do list
+    function fun() {
+        var item = document.getElementById('todoInput').value;
+        var text = document.createTextNode(item);
+        var newItem = document.createElement("li")
+    
+        newItem.appendChild(text);
+        document.getElementById('todoList').appendChild(newItem);
+        
+    }
+    //to print the repeated iteams in an array
+
+    // var array1 = ['a', 'b', 'c', 'd'];
+    // var array2 = ['r', 'e', 'a'];
+    // function findCommonElement(array1, array2) {
+
+    //     for(let i = 0; i < array1.length; i++) { 
+    //         for(let j = 0; j < array2.length; j++) { 
+    //     if(array1[i] === array2[j]) {
+    //         return true;
+    //     }
+    //     }
+    //     }
+    //     return false;
+    // }
+    // document.write(findCommonElement(array1,array2))
+
+ // to remove the duplicate elements in an array 
+
+    var arr = ["apple",'lemon', "bannana", "orange", "apple", "orange"];
+
+// arr = arr.filter( function( item, index, inputArray ) {
+//            return inputArray.indexOf(item) == index;
+//     });
+    function fn(data) {
+        // return data.filter((value, index) => data.indexOf(value) === index );
+        // return [...new Set(data)]
+        let unique = [];
+        data.forEach(element => {
+            if(!unique.includes(element)) {
+                unique.push(element)
+            }
+            
+        });
+        return unique;
+    }
+
+    console.log(fn(arr))
+
+// largest numbere in an array
+    var arr = [2, 5, 50, 6, 56, 0, 8, 8520]
+    var largest = 0;
+    for (var i = 0; i <= largest; i++) {
+        if(arr[i] > largest) {
+            var  largest = arr[i];
+        }
+    }
+    // console.log(largest)
+    var p = document.getElementById('demo').innerHTML = largest;
+
+    // reverse String 
+
+    var str1 = 'hello';
+    function reverseString (str) {
+         
+        var newString = '';
+        for( var i = str.length - 1; i >= 0; i--) {
+            newString += str[i];
+
+        }
+        return newString;
+    }
+    console.log("original string is "+ str1)
+    console.log (reverseString('hello'));
+
+</script>
+
+    
+
+
+<!-- <table id="table" border="1">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Delete</th>
+    </tr>
+    <tr>
+        <td>Virat </td>
+        <td>Kohli</td>
+        <td>18</td>
+        <td>Remove</td>
+    </tr>
+    <tr>
+        <td>ABD</td>
+        <td>MR.360</td>
+        <td>17</td>
+        <td>Remove</td>
+    </tr>
+    <tr>
+        <td>Smith </td>
+        <td>Steve</td>
+        <td>49</td>
+        <td>Remove</td>
+    </tr>
+</table><br> -->
+
+<table id="table" border="1">
+    <tr>
+        <th>First Name</th>
+        <th>Lastt Name</th>
+        <th>Age</th>
+    </tr>
+    <tr>
+        <td>AA</td>
+        <td>BB</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>CC</td>
+        <td>DD</td>
+        <td>120</td>
+    </tr>
+    <tr>
+        <td>EE</td>
+        <td>GG</td>
+        <td>16</td>
+    </tr>
+</table> <br>
+
+<div class="tab">
+First Name: <input type="text" name="fname" id="fname"><br><br>
+Lastt Name: <input type="text" name="lname" id="lname"><br><br>
+Age: <input type="text" name="age" id="age"><br><br>
+<button onclick="addTableRow()">Add</button>
+<button>Edit</button>
+<button>Remove</button>
+
+
+
+</div>
+<!-- <script>
+    var index, table = document.getElementById('table');
+        for (var i = 0; i < table.rows.length; i++) {
+            table.rows[i].cells[3].onclick = function() {
+                console.log(this.parentElement.rowIndex)
+                index = this.parentElement.rowIndex;
+                table.deleteRow(index);
+                console.log(index);
+            }
+        }
+        // var foo = function() {
+        var button = document.createElement('BUTTON');
+        button.innerHTML =  'Click Me';
+        button.onclick = function () {
+            alert("did Something ");
+        }
+        document.body.appendChild(button);
+        // }
+
+
+</script>
+ -->
+<script>
+    function addTableRow() {
+        var table = document.getElementById('table'),
+        newRow = table.insertRow(table.length)
+        cell1 = newRow.insertCell(0)
+        cell2 = newRow.insertCell(1)
+        cell3 = newRow.insertCell(2)
+
+        fname = document.getElementById('fname').value 
+        lname = document.getElementById('lname').value
+        age = document.getElementById('age').value
+
+        cell1.innerHTML = fname
+        cell2.innerHTML = lname
+        cell3.innerHTML = age
+
+    
+    }
+function selectedRow() {
+    var rIndex, table = document.getElementById('table');
+    for (var i =1; i < table.rows[0].length; i++) {
+        table.rows[i].onclick = function() {
+            rIndex = this.rowIndex;
+            console.log(rIndex)
+            document.getElementById('fname').value = this.cells[0].innerHTML;
+            document.getElementById('lname').value = this.cells[1].innerHTML;
+            document.getElementById('age').value = this.cells[2].innerHTML;
+        }
+    }
+}
+selectedRow();
+
+
+</script>
+
+</body>
+</html>
